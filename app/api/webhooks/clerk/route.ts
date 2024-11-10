@@ -16,9 +16,6 @@ export async function POST(req: Request) {
   }
   // Get the headers
   const headerPayload = await headers();
-  headerPayload.set('Access-Control-Allow-Origin', '*');
-  headerPayload.set('Access-Control-Allow-Methods', 'POST');
-  headerPayload.set('Access-Control-Allow-Headers', 'Content-Type');
   const svix_id = headerPayload.get('svix-id');
   const svix_timestamp = headerPayload.get('svix-timestamp');
   const svix_signature = headerPayload.get('svix-signature');
@@ -29,9 +26,10 @@ export async function POST(req: Request) {
       status: 400,
     });
   }
-
+  
   // Get the body
   const payload = await req.json();
+  console.log('payload:', payload);
   const body = JSON.stringify(payload);
 
   // Create a new Svix instance with your secret.

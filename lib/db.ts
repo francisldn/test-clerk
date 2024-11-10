@@ -17,7 +17,7 @@ export const connect = async () => {
   if (cached.conn) {
     return cached.conn;
   }
-
+  console.log('mongo_url', MONGODB_URL);
   cached.promise = mongoose.connect(MONGODB_URL, {
     dbName: process.env.CLERK_DB_NAME,
     bufferCommands: false,
