@@ -25,6 +25,5 @@ export const connect = async () => {
   });
 
   cached.conn = await cached.promise;
-
   return cached.conn;
 };
